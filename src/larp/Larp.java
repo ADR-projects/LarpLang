@@ -15,7 +15,9 @@ public class Larp{
             String source = Files.readString(Path.of(args[0]));
             // System.out.println(source);
             List<Token> tokens = new Lexer(source).scan();
-            Expr expr = new Parser(tokens).parse();
+            List<Stmt> statements = new Parser(tokens).parse();
+            new Interpreter(System.out).interpret(statements);
+//            Expr expr = new Parser(tokens).parse();
 //            for (Token token : tokens) {
 //                System.out.println(token);
 //            }

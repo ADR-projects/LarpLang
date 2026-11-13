@@ -1,4 +1,14 @@
-let x = 5.5
-yap "hi" + x
-// comment
-if (x >= 3) { yap t }
+yap 1 + 2 * 3
+yap (1 + 2) * 3
+yap 10 / 4
+yap 10 % 3
+yap 1 - 2 - 3
+yap -5 + 2
+yap "hi " + 5
+yap !ghost
+yap !0
+yap 1 == 1
+yap "a" == "b"
+yap 2 < 3
+yap 3 <= 2
+yap ghost
