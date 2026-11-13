@@ -15,11 +15,15 @@ public class Larp{
             String source = Files.readString(Path.of(args[0]));
             // System.out.println(source);
             List<Token> tokens = new Lexer(source).scan();
-            for (Token token : tokens) {
-                System.out.println(token);
-            }
+            Expr expr = new Parser(tokens).parse();
+//            for (Token token : tokens) {
+//                System.out.println(token);
+//            }
         } catch (IOException e) {
             System.out.println("Could not read file: " + e.getMessage());
+        }
+        catch (RuntimeException e) {
+            System.out.println("There is a run-time exception " + e.getMessage());
         }
     }
 }
