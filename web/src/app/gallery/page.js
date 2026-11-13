@@ -23,14 +23,10 @@ export default function GalleryPage() {
             <Sticker color="matcha" rotate={1}>
               5 EXAMPLES
             </Sticker>
-            <Sticker color="yellow" rotate={-2}>
-              JAVA 21
-            </Sticker>
           </div>
         </div>
         <p className="font-mono text-sm sm:text-base text-black/75 max-w-2xl leading-relaxed">
-          Curated runnable programs exploring LarpLang syntax, arithmetic
-          precedence, string coercion, relational comparisons, and truthiness.
+          Try out these code examples!
         </p>
       </div>
 
@@ -52,9 +48,6 @@ export default function GalleryPage() {
                   <h2 className="font-pixel text-xl sm:text-2xl font-bold text-black">
                     {item.title}
                   </h2>
-                  <Sticker color="matcha" rotate={2} size="sm">
-                    ✓ works
-                  </Sticker>
                 </div>
 
                 {/* Description */}
@@ -73,7 +66,7 @@ export default function GalleryPage() {
               {/* Action Button */}
               <div className="pt-2 border-t border-black/10 flex items-center justify-between">
                 <span className="font-mono text-[10px] uppercase tracking-wider text-black/60 font-bold">
-                  ID: {item.id}
+                  {item.id}
                 </span>
                 <Link
                   href={`/playground?example=${encodeURIComponent(item.id)}`}

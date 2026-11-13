@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaGithub } from "react-icons/fa";
 import { siteConfig } from "@/data/content";
 
 export default function Navbar() {
@@ -11,7 +12,7 @@ export default function Navbar() {
     { label: "★ About", href: "/" },
     { label: "▶ Playground", href: "/playground" },
     { label: "</> Gallery", href: "/gallery" },
-    { label: "● Contact", href: "/contact" },
+    { label: "☎ Find Me", href: "/contact" },
   ];
 
   return (
@@ -26,10 +27,7 @@ export default function Navbar() {
           className="flex items-center gap-2 group text-black focus:outline-none"
         >
           <span className="font-pixel text-2xl sm:text-3xl tracking-wider font-bold bg-[#fed156] px-2 py-0.5 border-2 border-black shadow-[2px_2px_0px_#000] group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
-            LARP
-          </span>
-          <span className="font-mono text-xs uppercase tracking-widest text-black/70 hidden sm:inline-block">
-            v0.1-java
+            LarpLang
           </span>
         </Link>
 
@@ -61,8 +59,9 @@ export default function Navbar() {
             href={siteConfig.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="retro-btn px-2.5 sm:px-3 py-1 text-xs sm:text-sm font-bold tracking-wide bg-[#a3c97d] text-black rounded-sm inline-flex items-center gap-1"
+            className="retro-btn px-2.5 sm:px-3 py-1 text-xs sm:text-sm font-bold tracking-wide bg-[#a3c97d] text-black rounded-sm inline-flex items-center gap-1.5"
           >
+            <FaGithub />
             <span>GitHub</span>
             <span className="text-[10px]">↗</span>
           </a>

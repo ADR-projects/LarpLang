@@ -2,38 +2,44 @@
 export const siteConfig = {
   name: "LARPLANG",
   title: "LarpLang",
-  tagline: "A toy interpreted language built from scratch in Java.",
+  tagline:
+    "A custom interpreted programming language built from scratch in Java.",
   description:
     "LarpLang is an educational programming language crafted from first principles in Java. It features an interactive in-browser playground powered by CheerpJ.",
   status:
     "Status: Phase 3: Lexer, recursive descent parser, and expression tree interpreter are live.",
-  githubUrl: "https://github.com/placeholder/larplang",
+  githubUrl: "https://github.com/ADR-projects/LarpLang",
   contact: {
     email: "creator@larplang.dev",
-    twitter: "https://x.com/placeholder",
-    discord: "https://discord.gg/placeholder",
-    author: "LarpLang Team",
-    location: "The Internet",
+    github: "https://github.com/ADR-projects/LarpLang",
+    linkedin: "https://linkedin.com/in/adrija-das-dev",
+    portfolio: "https://adrija-das.vercel.app",
+    author: "Adrija",
+    location: "Planet Earth",
   },
   socialLinks: [
     {
-      label: "★ GitHub",
-      url: "https://github.com/placeholder/larplang",
+      label: "GitHub",
+      type: "github",
+      url: "https://github.com/ADR-projects/LarpLang",
       external: true,
     },
     {
-      label: "✦ Twitter / X",
-      url: "https://x.com/placeholder",
+      label: "LinkedIn",
+      type: "linkedin",
+      url: "https://linkedin.com/in/adrija-das-dev",
       external: true,
     },
     {
-      label: "● Discord Community",
-      url: "https://discord.gg/placeholder",
+      label: "Portfolio",
+      type: "portfolio",
+      url: "https://adrija-das.vercel.app",
       external: true,
     },
     {
-      label: "✉ creator@larplang.dev",
-      url: "mailto:creator@larplang.dev",
+      label: "Email",
+      type: "email",
+      url: "mailto:i.adrijadas@gmail.com",
       external: false,
     },
   ],

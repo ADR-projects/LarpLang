@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
         <footer className="w-full max-w-5xl mx-auto px-4 py-8 text-center text-xs text-black/70">
           <div className="border-t-2 border-black/20 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono">
             <div>
-              <span>✦ {siteConfig.name} — Handcrafted in Java 21</span>
+              <span>★ {siteConfig.name} — Handcrafted in Java 21</span>
             </div>
             <div className="flex items-center gap-4">
               <a

@@ -13,11 +13,8 @@ export default function AboutPage() {
 
         {/* Stickers */}
         <div className="flex flex-wrap items-center gap-2 mb-4">
-          <Sticker color="yellow" rotate={-2}>
-            ★ TOY LANGUAGE
-          </Sticker>
           <Sticker color="matcha" rotate={1}>
-            ● BUILT IN JAVA 21
+            🡺 CUSTOM PROGRAMMING LANGUAGE
           </Sticker>
         </div>
 
@@ -49,44 +46,37 @@ export default function AboutPage() {
       {/* Second White Section: What is LarpLang? + Retro TV Gif */}
       <section className="retro-card p-6 sm:p-10 bg-white relative">
         <div className="washi-tape-tl" />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Side: Content */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <Sticker color="mint" rotate={-1}>
-                ★ ABOUT THE PROJECT
+                ★ ABOUT THIS PROJECT
               </Sticker>
             </div>
-            <h2 className="font-pixel text-3xl sm:text-5xl font-bold text-black tracking-tight">
+            <h2 className="font-pixel text-3xl sm:text-5xl font-bold text-black tracking-tight mt-4 mb-2">
               What is LarpLang?
             </h2>
             <div className="space-y-3 font-mono text-xs sm:text-sm text-black/80 leading-relaxed">
-              <p>
-                <strong>LarpLang</strong> is a playful, lightweight programming
-                language built entirely from first principles in{" "}
-                <strong>Java 21</strong>.
+              <p className="text-justify">
+                The word &quot;Larp&quot; has been trending lately. It
+                originally meant &quot;Live-Action Roleplay&quot; but now is
+                used as a verb: to larp is to pretend to be something
+                you&apos;re not in an exaggerated way.
               </p>
-              <p>
-                Designed with a fun retro spirit, it trades modern corporate
-                cruft for expressive, tongue-in-cheek keywords like{" "}
-                <code className="bg-[#fed156] px-1 py-0.5 border border-black font-bold text-black">
-                  yap
-                </code>{" "}
-                for standard output,{" "}
-                <code className="bg-[#a2e8dd] px-1 py-0.5 border border-black font-bold text-black">
-                  ghost
-                </code>{" "}
-                for null, and{" "}
-                <code className="bg-[#a3c97d] px-1 py-0.5 border border-black font-bold text-black">
-                  t / f
-                </code>{" "}
-                for boolean truths.
+              <p className="text-justify">
+                In my current semester, we are studying Compiler Design. I
+                thought that the best way to learn Lexers, Parsers, CFGs and
+                ASTs was to try using them myself. Of course it had to have a
+                funny name, despite being a very serious project. I am still
+                working on making LarpLang even more like a real programming
+                language.
               </p>
-              <p>
+              <p className="text-justify">
                 Through the power of <strong>CheerpJ WebAssembly</strong>, the
                 full compiled Java interpreter runs directly in your web
-                browser—no servers, plugins, or local Java installations
-                required.
+                browser. No local Java installations required. I hope you will
+                have fun with this playground!
               </p>
             </div>
             <div className="pt-2 flex flex-wrap gap-3">
@@ -108,12 +98,12 @@ export default function AboutPage() {
           </div>
 
           {/* Right Side: Retro TV GIF (Frameless) */}
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center md:pl-6">
             <Image
               src="/retro-tv.gif"
               alt="Retro TV animation"
-              width={340}
-              height={280}
+              width={320}
+              height={260}
               unoptimized
               className="w-full max-w-xs h-auto object-contain"
             />
@@ -122,7 +112,7 @@ export default function AboutPage() {
       </section>
 
       {/* Code Sample Preview with High-Contrast Text */}
-      <section className="retro-card p-6 sm:p-8 bg-white">
+      <section className="retro-card p-6 sm:p-10 bg-white">
         <div className="flex items-center justify-between pb-3 border-b-2 border-black mb-4">
           <div className="flex items-center gap-2">
             <span className="font-pixel text-xl sm:text-2xl font-bold">
@@ -137,8 +127,8 @@ export default function AboutPage() {
           </Sticker>
         </div>
 
-        <div className="retro-card-sm bg-[#18181b] p-5 font-mono text-xs sm:text-sm overflow-x-auto border-2 border-black">
-          <pre className="space-y-1 leading-relaxed">
+        <div className="retro-card-sm bg-[#18181b] p-6 sm:p-8 font-mono text-xs sm:text-sm overflow-x-auto border-2 border-black">
+          <pre className="p-2 space-y-1.5 leading-relaxed">
             <code>
               <span className="text-[#86efac] font-medium">
                 {`# Arithmetic precedence and groupings`}
@@ -190,11 +180,8 @@ export default function AboutPage() {
       <section className="retro-card p-6 sm:p-8 bg-white">
         <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b-2 border-black mb-6">
           <h2 className="font-pixel text-2xl sm:text-3xl font-bold">
-            ✦ Keyword Glossary
+            ★ Keyword Glossary
           </h2>
-          <Sticker color="matcha" size="sm">
-            8 KEYWORDS
-          </Sticker>
         </div>
 
         <p className="font-mono text-xs sm:text-sm text-black/80 mb-6">

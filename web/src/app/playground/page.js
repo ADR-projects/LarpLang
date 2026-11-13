@@ -304,12 +304,12 @@ function PlaygroundContent() {
             >
               {isJavaLoading ? (
                 <>
-                  <span className="animate-spin text-sm">✦</span>
+                  <span className="animate-spin inline-block text-sm">⟳</span>
                   <span>Loading Java...</span>
                 </>
               ) : isRunning ? (
                 <>
-                  <span className="animate-spin text-sm">✦</span>
+                  <span className="animate-spin inline-block text-sm">⟳</span>
                   <span>Executing...</span>
                 </>
               ) : (
@@ -330,7 +330,7 @@ function PlaygroundContent() {
           <div className="retro-card bg-white flex flex-col">
             <div className="p-3 border-b-2 border-black bg-[#faf7ee] flex items-center justify-between">
               <span className="font-mono text-xs font-bold uppercase tracking-wider">
-                ● editor.larp
+                ● MyProgram.larp
               </span>
               <span className="font-mono text-[10px] text-black/60">
                 Press Ctrl+Enter to Run
@@ -357,7 +357,7 @@ function PlaygroundContent() {
                 ★ Standard Output
               </span>
               <span className="font-mono text-[10px] text-black/60 font-bold">
-                Larp.run(code)
+                From The Console
               </span>
             </div>
             <div className="p-4 flex-1">
@@ -382,7 +382,7 @@ export default function PlaygroundPage() {
     <Suspense
       fallback={
         <div className="retro-card p-10 text-center font-mono text-sm">
-          <span className="animate-spin inline-block mr-2">✦</span>
+          <span className="animate-spin inline-block mr-2">⟳</span>
           Loading Playground...
         </div>
       }

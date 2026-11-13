@@ -1,6 +1,26 @@
 import Image from "next/image";
+import {
+  FaDiscord,
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+  FaGlobe,
+} from "react-icons/fa";
 import Sticker from "@/components/Sticker";
 import { siteConfig } from "@/data/content";
+
+function getSocialIcon(type) {
+  switch (type) {
+    case "github":
+      return <FaGithub />;
+    case "linkedin":
+      return <FaLinkedin />;
+    case "portfolio":
+      return <FaGlobe />;
+    default:
+      return <FaEnvelope />;
+  }
+}
 
 export default function ContactPage() {
   return (
@@ -13,7 +33,7 @@ export default function ContactPage() {
         {/* Stickers */}
         <div className="flex flex-wrap items-center gap-2 mb-4">
           <Sticker color="matcha" rotate={-2}>
-            ★ SAY HELLO OR COLLAB?
+            SAY HELLO OR COLLAB?
           </Sticker>
         </div>
 
@@ -23,14 +43,14 @@ export default function ContactPage() {
         </h1>
 
         <div className="flex flex-col items-center justify-center text-center my-6">
-          <div className="retro-card p-4 sm:p-5 bg-white relative rotate-1 hover:rotate-0 transition-transform">
+          <div className="retro-card p-4 sm:p-5 bg-white relative rotate-1 hover:rotate-0 transition-transform mb-5">
             <div className="washi-tape-tl" />
             <div className="w-44 h-44 sm:w-56 sm:h-56 border-2 border-black overflow-hidden bg-[#faf7ee]">
               <Image
                 src="/adr.jpeg"
                 alt="Meet the developer"
-                width={240}
-                height={240}
+                width={140}
+                height={140}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -39,13 +59,12 @@ export default function ContactPage() {
                 Adrija Das
               </span>
               <span className="font-mono text-xs text-black/60 block mt-0.5">
-                Creator & Maintainer of LarpLang
+                Creator & Maintainer
               </span>
             </div>
           </div>
         </div>
 
-        {/* Friendly text on ruled notebook lines */}
         <div className="retro-card-sm p-4 sm:p-6 bg-[#faf7ee] ruled-lines font-mono text-xs sm:text-sm text-black/85 mb-8">
           <p className="mb-3">
             Hey there! Thanks for exploring <strong>{siteConfig.title}</strong>.
@@ -56,16 +75,16 @@ export default function ContactPage() {
             principles.
           </p>
           <p>
-            Whether you found a grammar quirk, want to talk AST architectures,
-            or just want to say hi, feel free to reach out via the direct links
-            below!
+            Feel free to reach out via the direct links below!{" "}
+            <strong>I would love to collaborate on new projects.</strong>
           </p>
         </div>
 
         {/* Links list */}
         <div className="space-y-3 font-mono">
-          <h2 className="font-pixel text-xl sm:text-2xl font-bold text-black mb-2">
-            ✦ Direct Channels
+          <h2 className="font-pixel text-xl sm:text-2xl font-bold text-black mb-2 flex items-center gap-2">
+            <span>★</span>
+            <span>Direct Channels</span>
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -86,7 +105,10 @@ export default function ContactPage() {
                   rel={item.external ? "noopener noreferrer" : undefined}
                   className={`retro-btn p-3.5 ${bg} text-black font-bold text-xs sm:text-sm flex items-center justify-between group`}
                 >
-                  <span>{item.label}</span>
+                  <span className="flex items-center gap-3 text-lg">
+                    {getSocialIcon(item.type)}
+                    <span className="ml-2">{item.label}</span>
+                  </span>
                   <span className="font-pixel text-base group-hover:translate-x-1 transition-transform">
                     {item.external ? "↗" : "→"}
                   </span>
@@ -99,7 +121,7 @@ export default function ContactPage() {
         {/* Footnote */}
         <div className="mt-8 pt-4 border-t-2 border-black/10 flex items-center justify-between text-xs font-mono text-black/60">
           <span>{siteConfig.contact.location}</span>
-          <span>No forms, no tracking ● Just plain web</span>
+          <span>Built with 💖 by ADR (2026)</span>
         </div>
       </div>
     </div>
