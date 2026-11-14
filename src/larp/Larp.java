@@ -20,6 +20,9 @@ public class Larp{
         catch (RuntimeException e){
             out.println(e.getMessage());
         }
+        catch(StackOverflowError e){
+            out.println("stack overflow: too much recursion");
+        }
         return buffer.toString(StandardCharsets.UTF_8);
     }
     public static void main(String[] args){

@@ -1,14 +1,11 @@
-take x = 3
-until (x > 0) {
-  yap x
-  x = x - 1
+func fib(n) {
+  if (n <= 1) gimme n
+  gimme fib(n - 1) + fib(n - 2)
 }
-if (x == 0) yap "done" else yap "not done"
-take a = t and f
-yap a
-yap ghost or "fallback"
-{
-  take inner = 1
-  // yap inner
+take i = 0
+until (i < 8) {
+  yap fib(i)
+  i = i + 1
 }
-yap inner
+// until (t) { }
+// yap @

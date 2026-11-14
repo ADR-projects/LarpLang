@@ -21,7 +21,7 @@ export default function GalleryPage() {
           </div>
           <div className="flex items-center gap-2">
             <Sticker color="matcha" rotate={1}>
-              5 EXAMPLES
+              {workingExamples.length} EXAMPLES
             </Sticker>
           </div>
         </div>

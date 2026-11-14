@@ -1,6 +1,7 @@
 package larp;
 import java.io.PrintStream;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Interpreter{
     private final PrintStream out;
@@ -9,11 +10,20 @@ public class Interpreter{
     }
     private Environment environment = new Environment();
 
+    // for the infinite loops
+    private static final long MAX_LOOP_STEPS = 10_000;
+    private long loopSteps = 0;
+
     public void interpret(List<Stmt> statements){
-        for(Stmt stmt : statements){
-            execute(stmt);
+        loopSteps = 0;
+        try{
+            for(Stmt stmt : statements) execute(stmt);
+        }
+        catch(ReturnSignal r){
+            throw new RuntimeException("'gimme' can only be used inside a func");
         }
     }
+
     // statements
     public void execute(Stmt stmt){
         switch (stmt){
@@ -31,11 +41,18 @@ public class Interpreter{
                 else if(i.elseBranch() != null) execute(i.elseBranch());
             }
             case Stmt.Until u -> {
-                while(isTruthy(evaluate(u.condition()))) execute(u.body());
+                while(isTruthy(evaluate(u.condition()))){
+                    if(++loopSteps > MAX_LOOP_STEPS){
+                        throw new RuntimeException("loop stopped: more than "+MAX_LOOP_STEPS+" iterations. larp responsively!");
+                    }
+                    execute(u.body());
+                }
             }
+            case Stmt.Func f -> environment.define(f.name().lexeme(), new LarpFunction(f, environment));
+            case Stmt.Return r -> throw new ReturnSignal(evaluate(r.value()));
         }
     }
-    private void executeBlock(List<Stmt> statements, Environment blockEnv){
+    void executeBlock(List<Stmt> statements, Environment blockEnv){
         Environment previous = this.environment;
         try{
             this.environment = blockEnv;
@@ -55,6 +72,7 @@ public class Interpreter{
             case Expr.Unary u -> evalUnary(u);
             case Expr.Binary b -> evalBinary(b);
             case Expr.Logical l -> evalLogical(l);
+            case Expr.Call c -> evalCall(c);
         };
     }
     private Object evalUnary(Expr.Unary u){
@@ -121,6 +139,21 @@ public class Interpreter{
         }
         return evaluate(l.right());
     }
+    private Object evalCall(Expr.Call c){
+        Object callee = evaluate(c.callee());
+        List<Object> args = new ArrayList<>();
+        for (Expr a : c.arguments()) args.add(evaluate(a));
+
+        if (!(callee instanceof LarpCallable fn)){
+            throw error(c.paren(), "can only call functions");
+        }
+        if (args.size() != fn.arity()){
+            throw error(c.paren(), "expected " + fn.arity() + " arguments but I got " + args.size()+" args");
+        }
+        return fn.call(this, args);
+    }
+
+
     // helper functions
     private boolean isTruthy(Object value){
         if(value == null) return false;

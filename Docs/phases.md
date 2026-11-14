@@ -1,4 +1,4 @@
-No installs needed. Plain JDK 17+. Every phase ends with something you can run and see.
+# Working phases
 
 **Phase 0: Setup (10 min)**
 - Create a class `Larp` with `main`. Read a file using `Files.readString(Path.of(args[0]))` (`java.nio.file.Files`, `java.nio.file.Path`).
@@ -49,10 +49,6 @@ No installs needed. Plain JDK 17+. Every phase ends with something you can run a
 - In the parser, throw it on bad syntax. In `Larp`, catch it and print `line 4: expected ')'`.
 - **See:** broken code gives a clear message instead of a Java stack trace.
 
-**Reference:** *Crafting Interpreters*, chapters 4 to 10, matches these phases in order. Use it when you get stuck on a phase.
+**Reference:** *Crafting Interpreters*, chapters 4 to 10, matches these phases in order.
 
-**Two small decisions to make early:**
-- `until` normally means "loop until the condition becomes true". You listed it as a while loop. Pick one and stick to it.
-- Making `t` and `f` keywords means nobody can name a variable `t` or `f`. Fine, just know it.
-
-After Phase 7, say so and I'll map the next steps to your compiler syllabus (resolver pass, bytecode, VM).
+next steps: resolver pass, bytecode, VM.

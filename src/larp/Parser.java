@@ -35,6 +35,7 @@ public class Parser {
     }
     private Stmt declaration(){
         if(match(TAKE)) return takeDeclaration();
+        if(match(FUNC)) return funcDeclaration();
         return statement();
     }
     private Stmt takeDeclaration(){
@@ -48,10 +49,29 @@ public class Parser {
         if(match(IF)) return ifStatement();
         if(match(UNTIL)) return untilStatement();
         if(match(LEFT_BRACE)) return new Stmt.Block(block());
-
+        if(match(GIMME)) return returnStatement();
         return expressionStatement();
     }
+    private Stmt funcDeclaration(){
+        Token name = consume(IDENT, "expected function name");
+        consume(LEFT_PAREN, "expected '(' after function name");
+        List<Token> params = new ArrayList<>();
+        if (!check(RIGHT_PAREN)){
+            do {
+                params.add(consume(IDENT, "expected parameter name"));
+            } while (match(COMMA));
+        }
+        consume(RIGHT_PAREN, "expected ')' after parameters");
+        consume(LEFT_BRACE, "expected '{' before function body");
+        List<Stmt> body = block();
+        return new Stmt.Func(name, params, body);
+    }
 
+    private Stmt returnStatement(){
+        Token keyword = previous();
+        Expr value = expression();          // gives always needs a value, use "gives ghost" for nothing
+        return new Stmt.Return(keyword, value);
+    }
     private Stmt printStatement(){
         Expr value = expression();
         return new Stmt.Print(value);
@@ -175,9 +195,25 @@ public class Parser {
             Expr right = unary();          // recursion allows --5 and !!t
             return new Expr.Unary(op, right);
         }
-        return primary();
+        return call();
     }
-
+    private Expr call(){
+        Expr expr = primary();
+        while(match(LEFT_PAREN)){
+            expr = finishCall(expr);
+        }
+        return expr;
+    }
+    private Expr finishCall(Expr callee){
+        List<Expr> arguments = new ArrayList<>();
+        if(!check(RIGHT_PAREN)){
+            do{
+                arguments.add(expression());
+            } while(match(COMMA));
+        }
+        Token paren = consume(RIGHT_PAREN, "expected ')' after the args");
+        return new Expr.Call(callee, paren, arguments);
+    }
     private Expr primary() {
         if(match(IDENT))
             return new Expr.Variable(previous());

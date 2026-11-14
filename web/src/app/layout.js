@@ -50,12 +50,15 @@ export default function RootLayout({ children }) {
                 GitHub Repo
               </a>
               <span>●</span>
-                        <Image
-                          src="/sign.png"
-                          alt="my logo- it says 'ADR'"
-                          width={70}
-                          height={70}
-                        />
+              {/** This Image kept throwing warnings, a last-min fix */}
+              <Image
+                src="/sign.png"
+                alt="my logo- it says 'ADR'"
+                width={90}
+                height={80}
+                style={{ width: "auto", height: "auto" }}
+                className="w-32 h-auto"
+              />
             </div>
           </div>
         </footer>

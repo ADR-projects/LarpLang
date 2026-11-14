@@ -9,6 +9,8 @@ public sealed interface Stmt{
     record Block(List<Stmt> statements) implements Stmt{}
     record If(Expr condition, Stmt thenBranch, Stmt elseBranch) implements Stmt{}
     record Until(Expr condition, Stmt body) implements Stmt{}
+    record Func(Token name, List<Token> params, List<Stmt> body) implements Stmt{}
+    record Return(Token keyword, Expr value) implements Stmt{}
 }
 // the statement is basically something that does an action
 // it does not give a value back

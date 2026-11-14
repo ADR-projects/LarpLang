@@ -160,6 +160,65 @@ yap !t
 yap ghost`,
     },
     {
+      id: "variables",
+      title: "Variables & State",
+      description:
+        "Declare mutable variable bindings with take and reassign state.",
+      kind: "works",
+      code: `take x = 10
+take y = 25
+yap "Initial sum: " + (x + y)
+
+x = x * 2
+yap "Updated x: " + x`,
+    },
+    {
+      id: "conditionals",
+      title: "Conditionals (If / Else)",
+      description: "Branching control flow evaluated by expression truthiness.",
+      kind: "works",
+      code: `take score = 85
+
+if (score >= 80) {
+  yap "Score is high! Passed with honors."
+} else {
+  yap "Keep practicing!"
+}`,
+    },
+    {
+      id: "until-loop",
+      title: "Loops (until)",
+      description: "Iterate statement execution while condition holds truthy.",
+      kind: "works",
+      code: `take count = 1
+take total = 0
+
+until (count <= 5) {
+  yap "Count: " + count
+  total = total + count
+  count = count + 1
+}
+
+yap "Total sum: " + total`,
+    },
+    {
+      id: "fibonacci",
+      title: "Recursive Fibonacci",
+      description:
+        "Functions, recursive evaluation, and return values with gimme.",
+      kind: "works",
+      code: `func fib(n) {
+  if (n <= 1) gimme n
+  gimme fib(n - 1) + fib(n - 2)
+}
+
+take i = 0
+until (i < 8) {
+  yap fib(i)
+  i = i + 1
+}`,
+    },
+    {
       id: "syntax-error",
       title: "Syntax Error Check",
       description:

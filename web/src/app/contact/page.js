@@ -1,11 +1,5 @@
 import Image from "next/image";
-import {
-  FaDiscord,
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaGlobe,
-} from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaGlobe, FaLinkedin } from "react-icons/fa";
 import Sticker from "@/components/Sticker";
 import { siteConfig } from "@/data/content";
 

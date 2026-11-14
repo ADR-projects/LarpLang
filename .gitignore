@@ -1,2 +1,7 @@
-/.out/
 /.idea/
+/out/
+out/
+out/larp/
+*.class
+Docs/phases.md
+web/*.md

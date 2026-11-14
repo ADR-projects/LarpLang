@@ -79,7 +79,7 @@ public class Lexer{
             default -> {
                 if (isDigit(c)) number();
                 else if (isAlpha(c)) identifier();
-                else System.err.println("line " + line + ": unexpected character '" + c + "'");
+                else throw new RuntimeException("line " + line + ": unexpected character '" + c + "'");
             }
         }
     }
@@ -89,8 +89,8 @@ public class Lexer{
             advance();
         }
         if(isAtEnd()){
-            System.err.println("line "+line+" : unterminated string!");
-            return;
+            throw new RuntimeException("line "+line+" : unterminated string!");
+//            return;
         }
         advance();
         String withoutQuotes = source.substring(start + 1, current - 1);

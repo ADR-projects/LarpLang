@@ -3,7 +3,7 @@
 [![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://openjdk.org/)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![CheerpJ 5.0](https://img.shields.io/badge/WebAssembly-CheerpJ_5.0-654FF0?style=for-the-badge&logo=webassembly&logoColor=white)](https://cheerpj.com/)
-[![Status](https://img.shields.io/badge/Status-Phase_3_Live-blue?style=for-the-badge)](#roadmap)
+[![Status](https://img.shields.io/badge/Status-Phase_6_Live-blue?style=for-the-badge)](#roadmap)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 > A custom interpreted programming language crafted from first principles in **Java 21**, complete with an interactive in-browser playground running on **WebAssembly**.
@@ -35,28 +35,26 @@ LarpLang swaps standard boilerplate for expressive, lighthearted keywords:
 | `yap` | Standard output (print line) | `yap "hello world"` |
 | `t` / `f` | Boolean literals (`true` / `false`) | `yap (10 > 5) == t` |
 | `ghost` | Sentinel null / nil value (evaluates falsy) | `yap !ghost` |
-| `take` | Variable definition *(Phase 4)* | `take score = 100` |
-| `if` / `else` | Conditional branching *(Phase 5)* | `if x > 0 { yap "positive" }` |
-| `until` | Loop execution *(Phase 5)* | `until count == 0 { ... }` |
-| `func` / `gimme` | Functions and return statements *(Phase 6)* | `func add(a, b) { gimme a + b }` |
+| `take` | Variable definition & binding | `take score = 100` |
+| `if` / `else` | Conditional branching based on truthiness | `if (x > 0) { yap "positive" }` |
+| `until` | Loop execution repeating while condition holds | `until (i < 5) { i = i + 1 }` |
+| `func` / `gimme` | First-class functions and return statements | `func add(a, b) { gimme a + b }` |
 
 ### Sample Program
 
 ```larp
-# Arithmetic and grouping precedence
-yap 1 + 2 * 3
-yap (1 + 2) * 3
+# Recursive Fibonacci function
+func fib(n) {
+  if (n <= 1) gimme n
+  gimme fib(n - 1) + fib(n - 2)
+}
 
-# String concatenation with numeric coercion
-yap "Score: " + (50 * 2)
-
-# Comparisons & equality
-yap 10 > 5
-yap "larp" == "larp"
-
-# Truthiness with booleans and ghost (null)
-yap !ghost
-yap !f
+# Loop until 8 numbers are printed
+take i = 0
+until (i < 8) {
+  yap fib(i)
+  i = i + 1
+}
 ```
 
 ---
@@ -175,10 +173,16 @@ LarpLang/
 - [x] **Phase 1: Lexer** - Full token scanning, keyword mapping, line tracking
 - [x] **Phase 2: Parser** - Precedence climbing with recursive descent, grouping
 - [x] **Phase 3: Interpreter** - Tree-walking evaluator, truthiness logic, `yap` standard output
-- [ ] **Phase 4: Environments & Variables** - Dynamic scoping with `take`
-- [ ] **Phase 5: Control Flow** - Conditional blocks (`if`/`else`) and loops (`until`)
-- [ ] **Phase 6: Functions & Closures** - First-class callables (`func`, `gimme`)
+- [x] **Phase 4: Environments & Variables** - Lexical scoping with `take` and mutable assignments
+- [x] **Phase 5: Control Flow** - Conditional branching (`if`/`else`) and loops (`until`)
+- [x] **Phase 6: Functions & Closures** - First-class callables (`func`, `gimme`) and lexical environments
 - [ ] **Phase 7: Diagnostics & VM** - Rich error recovery and bytecode compilation
+
+---
+
+## Study Material
+
+Study material: [link](https://example.com)
 
 ---
 
