@@ -29,26 +29,104 @@ public class Parser {
     public List<Stmt> parse() {
         List<Stmt> statements = new ArrayList<>();
         while (!isAtEnd()) {
-            statements.add(statement());
+            statements.add(declaration());
         }
         return statements;
     }
+    private Stmt declaration(){
+        if(match(TAKE)) return takeDeclaration();
+        return statement();
+    }
+    private Stmt takeDeclaration(){
+        Token name = consume(IDENT, "expected variable name");
+        Expr initializer = null;
+        if(match(EQUAL)) initializer = expression();
+        return new Stmt.Take(name, initializer);
+    }
     private Stmt statement(){
         if(match(YAP)) return printStatement();
+        if(match(IF)) return ifStatement();
+        if(match(UNTIL)) return untilStatement();
+        if(match(LEFT_BRACE)) return new Stmt.Block(block());
+
         return expressionStatement();
     }
+
     private Stmt printStatement(){
         Expr value = expression();
         return new Stmt.Print(value);
     }
+    private Stmt ifStatement(){
+        consume(LEFT_PAREN, "expected '(' after 'if'");
+        Expr condition = expression();
+        consume(RIGHT_PAREN, "expected ')' afer condition");
+
+        Stmt thenBranch = statement();
+        Stmt elseBranch = null;
+        if(match(ELSE)) elseBranch = statement();
+
+        return new Stmt.If(condition, thenBranch, elseBranch);
+    }
+
+    private Stmt untilStatement(){
+        consume(LEFT_PAREN, "expected '(' after 'if'");
+        Expr condition = expression();
+        consume(RIGHT_PAREN, "expected ')' afer condition");
+        Stmt body = statement();
+        return new Stmt.Until(condition, body);
+    }
+
+    private List<Stmt> block(){
+        List<Stmt> statements = new ArrayList<>();
+        while(!check(RIGHT_BRACE) && !isAtEnd()){
+            statements.add(declaration());
+        }
+        consume(RIGHT_BRACE, "expected '}'");
+        return statements;
+    }
+
     private Stmt expressionStatement() {
         // for any statment that contains valid expression.
         Expr expr = expression();
 //        match(SEMICOLON);
         return new Stmt.ExprStmt(expr);
     }
+
     private Expr expression() {
-        return equality();
+        return assignment();
+    }
+
+    private Expr assignment(){
+        Expr expr = logicOr();
+        if(match(EQUAL)) {
+            Token equals = previous();
+            Expr value = assignment(); // allow a = b = 5
+            if(expr instanceof Expr.Variable v){
+                return new Expr.Assign(v.name(), value);
+            }
+            throw error(equals, "invalid assignment target");
+        }
+        return expr;
+    }
+
+    private Expr logicOr() {
+        Expr left = logicAnd();
+        while (match(OR)) {
+            Token op = previous();
+            Expr right = logicAnd();
+            left = new Expr.Logical(left, op, right);
+        }
+        return left;
+    }
+
+    private Expr logicAnd() {
+        Expr left = equality();
+        while (match(AND)) {
+            Token op = previous();
+            Expr right = equality();
+            left = new Expr.Logical(left, op, right);
+        }
+        return left;
     }
 
     private Expr equality() {
@@ -101,6 +179,9 @@ public class Parser {
     }
 
     private Expr primary() {
+        if(match(IDENT))
+            return new Expr.Variable(previous());
+
         if (match(NUMBER, STRING, T, F, GHOST)) {
             return new Expr.Literal(previous().literal());
         }

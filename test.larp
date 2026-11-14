@@ -1,14 +1,14 @@
-yap 1 + 2 * 3
-yap (1 + 2) * 3
-yap 10 / 4
-yap 10 % 3
-yap 1 - 2 - 3
-yap -5 + 2
-yap "hi " + 5
-yap !ghost
-yap !0
-yap 1 == 1
-yap "a" == "b"
-yap 2 < 3
-yap 3 <= 2
-yap ghost
+take x = 3
+until (x > 0) {
+  yap x
+  x = x - 1
+}
+if (x == 0) yap "done" else yap "not done"
+take a = t and f
+yap a
+yap ghost or "fallback"
+{
+  take inner = 1
+  // yap inner
+}
+yap inner
