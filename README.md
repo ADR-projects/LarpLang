@@ -26,6 +26,18 @@ Even better: thanks to **CheerpJ 5.0**, the exact compiled Java engine runs clie
 
 ---
 
+## IMP LINKS
+
+A huge thank you to : [This book](https://craftinginterpreters.com/)
+
+Curious? : [My friend grilled me about this project](Docs/FAQ.md)
+
+[I made a post about this](https://lnkd.in/p/dCkHuFfk)
+
+[TRY IT OUT](https://larp-lang.vercel.app/)
+
+---
+
 ## Language Syntax & Features
 
 LarpLang swaps standard boilerplate for expressive, lighthearted keywords:
@@ -185,17 +197,6 @@ LarpLang/
 
 ---
 
-## Other References
-
-A huge thank you to : [This book](https://craftinginterpreters.com/)
-
-Curious? : [My friend grilled me about this project](Docs/FAQ.md)
-
-[I made a post about this](https://lnkd.in/p/dCkHuFfk)
-
-[TRY IT OUT](https://larp-lang.vercel.app/)
-
----
 
 ## License
 
