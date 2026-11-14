@@ -121,7 +121,12 @@ export default function ContactPage() {
         {/* Footnote */}
         <div className="mt-8 pt-4 border-t-2 border-black/10 flex items-center justify-between text-xs font-mono text-black/60">
           <span>{siteConfig.contact.location}</span>
-          <span>Built with 💖 by ADR (2026)</span>
+          <Image
+            src="/sign.png"
+            alt="my logo- it says 'ADR'"
+            width={70}
+            height={70}
+          />
         </div>
       </div>
     </div>
