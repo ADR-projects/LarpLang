@@ -136,23 +136,28 @@ Open [http://localhost:3000](http://localhost:3000) to view the site, explore th
 
 ## Project Structure
 
+## Project Structure
+
 ```
 LarpLang/
 ├── src/
 │   └── larp/
-│       ├── Environment.java     # Symbol table & lexical scope (Phase 4)
-│       ├── Expr.java            # Sealed interface for AST expression nodes
-│       ├── Interpreter.java     # Tree-walking evaluator
-│       ├── Larp.java            # Main engine entry point
-│       ├── Lexer.java           # Token scanner
-│       ├── Parser.java          # Recursive descent precedence parser
-│       ├── Stmt.java            # Statement declarations (yap, blocks)
-│       ├── Token.java           # Immutable token record
-│       └── TokenType.java       # Keyword and operator enums
+│       ├── Environment.java     # Symbol table: variable scopes chained by parent
+│       ├── Expr.java            # Sealed interface for expression nodes (Binary, Unary, Literal, Grouping, Variable, Assign, Logical, Call)
+│       ├── Interpreter.java     # Tree-walking evaluator: statements, expressions, blocks, loop limit
+│       ├── Larp.java            # Entry point: run(source) used by the CLI and the web playground
+│       ├── LarpCallable.java    # Interface for anything callable (arity + call)
+│       ├── LarpFunction.java    # User-defined function with its closure environment
+│       ├── Lexer.java           # Token scanner: numbers, strings, identifiers, keywords, comments
+│       ├── Parser.java          # Recursive descent parser with operator precedence
+│       ├── ReturnSignal.java    # Exception used by gimme to return from a function
+│       ├── Stmt.java            # Statement nodes (Print, ExprStmt, Take, Block, If, Until, Func, Return)
+│       ├── Token.java           # Immutable token record (type, lexeme, literal, line)
+│       └── TokenType.java       # Token types for operators, literals and keywords
 ├── web/
 │   ├── public/
 │   │   ├── adr.jpeg             # Developer portrait
-│   │   ├── larp.jar             # Compiled WebAssembly JAR target
+│   │   ├── larp.jar             # Compiled interpreter, run in the browser by CheerpJ
 │   │   ├── larplang.png         # Project showcase preview
 │   │   └── retro-tv.gif         # Visual asset
 │   ├── src/
@@ -160,7 +165,7 @@ LarpLang/
 │   │   ├── components/          # UI components (Navbar, Stickers, Icons)
 │   │   └── data/content.js      # Central site content & runnable examples
 │   └── package.json
-├── build.bat                    # Windows Java build script
+├── build.bat                    # Windows build script: compiles Java and writes web/public/larp.jar
 ├── phases.md                    # Roadmap & compiler phase notes
 ├── test.larp                    # Sample LarpLang test file
 └── README.md
@@ -176,13 +181,19 @@ LarpLang/
 - [x] **Phase 4: Environments & Variables** - Lexical scoping with `take` and mutable assignments
 - [x] **Phase 5: Control Flow** - Conditional branching (`if`/`else`) and loops (`until`)
 - [x] **Phase 6: Functions & Closures** - First-class callables (`func`, `gimme`) and lexical environments
-- [ ] **Phase 7: Diagnostics & VM** - Rich error recovery and bytecode compilation
+- [🕰️] **Future Scope: Diagnostics & VM** - Rich error recovery and bytecode compilation
 
 ---
 
-## Study Material
+## Other References
 
-Study material: [link](https://example.com)
+A huge thank you to : [This book](https://craftinginterpreters.com/)
+
+Curious? : [My friend grilled me about this project](Docs/FAQ.md)
+
+<!-- [I made a post about this](https://www.linkedin.com/in/adrija-das-dev/)
+
+[TRY IT OUT]() -->
 
 ---
 

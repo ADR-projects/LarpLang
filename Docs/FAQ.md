@@ -1,6 +1,6 @@
 # LarpLang: FAQ
 
-"LarpLang is a pretty small, custom programming language I built in Java, with its own syntax (`take`, `yap`, `until`, `func`, `gimme`). I wrote the lexer, a recursive descent parser, and a tree-walking interpreter with scopes, closures and recursion. It also runs live in the browser through a web playground."
+LarpLang is a pretty small, custom programming language I built in Java, with its own syntax (`take`, `yap`, `until`, `func`, `gimme`). I wrote the lexer, a recursive descent parser, and a tree-walking interpreter with scopes, closures and recursion. It also runs live in the browser through a web playground.
 
 ```
 source code -> Lexer -> tokens -> Parser -> Interpreter -> output
