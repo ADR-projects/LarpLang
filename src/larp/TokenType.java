@@ -15,7 +15,7 @@ public enum TokenType {
     IDENT, NUMBER, STRING,
 
     // Keywords
-    LET, YAP, IF, ELSE, UNTIL, FUNC, GIMME,
+    TAKE, YAP, IF, ELSE, UNTIL, FUNC, GIMME,
     T, F, GHOST, AND, OR,
 
     EOF

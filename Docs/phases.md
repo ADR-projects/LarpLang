@@ -7,11 +7,11 @@ No installs needed. Plain JDK 17+. Every phase ends with something you can run a
 
 **Phase 1: Lexer**
 - **Study:** what a token is, and how to loop over characters with an index.
-- Create `enum TokenType` (`NUMBER`, `STRING`, `IDENT`, `PLUS`, `LET`, `YAP`, `EOF`, ...).
+- Create `enum TokenType` (`NUMBER`, `STRING`, `IDENT`, `PLUS`, `TAKE`, `YAP`, `EOF`, ...).
 - Create `record Token(TokenType type, String lexeme, Object literal, int line)`.
 - Create `class Lexer` with `List<Token> scan()`. Use `peek()` and `advance()` helpers.
 - Put keywords in a `Map<String, TokenType>` (`java.util.Map`). After reading an identifier, check the map.
-- **See:** `let x = 5` prints a list of tokens.
+- **See:** `take x = 5` prints a list of tokens.
 - remember to compile from src directory, javac larp/Larp.java then java larp/Larp
 
 **Phase 2: Expression parser**
@@ -30,7 +30,7 @@ No installs needed. Plain JDK 17+. Every phase ends with something you can run a
 - **Study:** scope and symbol tables.
 - Create `class Environment` with a `HashMap<String, Object>` and a `parent` field. `define`, `get`, `assign`. If a name isn't found, look in `parent`.
 - Add `Stmt.Let`, `Expr.Variable`, `Expr.Assign`.
-- **See:** `let x = 5` then `yap x + 1` prints `6`.
+- **See:** `take x = 5` then `yap x + 1` prints `6`.
 
 **Phase 5: Control flow**
 - Add `Stmt.Block` (new `Environment` with the current one as parent), `Stmt.If`, `Stmt.Until`, and `Expr.Logical` for `and`/`or`.

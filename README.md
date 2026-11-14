@@ -35,7 +35,7 @@ LarpLang swaps standard boilerplate for expressive, lighthearted keywords:
 | `yap` | Standard output (print line) | `yap "hello world"` |
 | `t` / `f` | Boolean literals (`true` / `false`) | `yap (10 > 5) == t` |
 | `ghost` | Sentinel null / nil value (evaluates falsy) | `yap !ghost` |
-| `let` | Variable definition *(Phase 4)* | `let score = 100` |
+| `take` | Variable definition *(Phase 4)* | `take score = 100` |
 | `if` / `else` | Conditional branching *(Phase 5)* | `if x > 0 { yap "positive" }` |
 | `until` | Loop execution *(Phase 5)* | `until count == 0 { ... }` |
 | `func` / `gimme` | Functions and return statements *(Phase 6)* | `func add(a, b) { gimme a + b }` |
@@ -175,7 +175,7 @@ LarpLang/
 - [x] **Phase 1: Lexer** - Full token scanning, keyword mapping, line tracking
 - [x] **Phase 2: Parser** - Precedence climbing with recursive descent, grouping
 - [x] **Phase 3: Interpreter** - Tree-walking evaluator, truthiness logic, `yap` standard output
-- [ ] **Phase 4: Environments & Variables** - Dynamic scoping with `let`
+- [ ] **Phase 4: Environments & Variables** - Dynamic scoping with `take`
 - [ ] **Phase 5: Control Flow** - Conditional blocks (`if`/`else`) and loops (`until`)
 - [ ] **Phase 6: Functions & Closures** - First-class callables (`func`, `gimme`)
 - [ ] **Phase 7: Diagnostics & VM** - Rich error recovery and bytecode compilation

@@ -66,7 +66,7 @@ export const siteConfig = {
       color: "matcha",
     },
     {
-      name: "let",
+      name: "take",
       meaning: "Declares a block-scoped variable binding with lexical scoping",
       category: "Binding",
       color: "yellow",

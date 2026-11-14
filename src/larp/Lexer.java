@@ -19,7 +19,7 @@ public class Lexer{
     private int line = 1;
 
     private static final Map<String, TokenType> KEYWORDS = Map.ofEntries(
-            Map.entry("let", TokenType.LET),
+            Map.entry("take", TokenType.TAKE),
             Map.entry("yap", TokenType.YAP),
             Map.entry("if", TokenType.IF),
             Map.entry("else", TokenType.ELSE),
