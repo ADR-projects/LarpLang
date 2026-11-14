@@ -191,9 +191,9 @@ A huge thank you to : [This book](https://craftinginterpreters.com/)
 
 Curious? : [My friend grilled me about this project](Docs/FAQ.md)
 
-<!-- [I made a post about this](https://www.linkedin.com/in/adrija-das-dev/)
+[I made a post about this](https://lnkd.in/p/dCkHuFfk)
 
-[TRY IT OUT]() -->
+[TRY IT OUT](https://larp-lang.vercel.app/)
 
 ---
 
