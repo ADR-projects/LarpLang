@@ -43,7 +43,7 @@ public class Interpreter{
             case Stmt.Until u -> {
                 while(isTruthy(evaluate(u.condition()))){
                     if(++loopSteps > MAX_LOOP_STEPS){
-                        throw new RuntimeException("loop stopped: more than "+MAX_LOOP_STEPS+" iterations. larp responsively!");
+                        throw new RuntimeException("loop stopped: more than "+MAX_LOOP_STEPS+" iterations. larp responsibly!");
                     }
                     execute(u.body());
                 }
