@@ -38,7 +38,7 @@ LarpLang swaps standard boilerplate for expressive, lighthearted keywords:
 | `let` | Variable definition *(Phase 4)* | `let score = 100` |
 | `if` / `else` | Conditional branching *(Phase 5)* | `if x > 0 { yap "positive" }` |
 | `until` | Loop execution *(Phase 5)* | `until count == 0 { ... }` |
-| `func` / `gives` | Functions and return statements *(Phase 6)* | `func add(a, b) { gives a + b }` |
+| `func` / `gimme` | Functions and return statements *(Phase 6)* | `func add(a, b) { gimme a + b }` |
 
 ### Sample Program
 
@@ -177,7 +177,7 @@ LarpLang/
 - [x] **Phase 3: Interpreter** - Tree-walking evaluator, truthiness logic, `yap` standard output
 - [ ] **Phase 4: Environments & Variables** - Dynamic scoping with `let`
 - [ ] **Phase 5: Control Flow** - Conditional blocks (`if`/`else`) and loops (`until`)
-- [ ] **Phase 6: Functions & Closures** - First-class callables (`func`, `gives`)
+- [ ] **Phase 6: Functions & Closures** - First-class callables (`func`, `gimme`)
 - [ ] **Phase 7: Diagnostics & VM** - Rich error recovery and bytecode compilation
 
 ---

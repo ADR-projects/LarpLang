@@ -90,7 +90,7 @@ export const siteConfig = {
       color: "yellow",
     },
     {
-      name: "gives",
+      name: "gimme",
       meaning: "Returns an evaluated value from an active function",
       category: "Functions",
       color: "matcha",

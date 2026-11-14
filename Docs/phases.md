@@ -41,7 +41,7 @@ No installs needed. Plain JDK 17+. Every phase ends with something you can run a
 - **Study:** closures. A function must remember the `Environment` it was defined in.
 - Add `Stmt.Func`, `Expr.Call`, and `interface LarpCallable { Object call(Interpreter i, List<Object> args); }`.
 - Create `class LarpFunction implements LarpCallable` that stores the declaration and its `Environment`.
-- For `gives`, create `class ReturnSignal extends RuntimeException` holding the value. Throw it in `gives`, catch it in `LarpFunction.call`.
+- For `gimme`, create `class ReturnSignal extends RuntimeException` holding the value. Throw it in `gimme`, catch it in `LarpFunction.call`.
 - **See:** a recursive `fib` function prints correct values.
 
 **Phase 7: Error handling**

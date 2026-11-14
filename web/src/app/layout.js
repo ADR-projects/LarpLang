@@ -17,9 +17,9 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata = {
-  title: "LARPLANG — Toy Programming Language in Java",
+  title: "LarpLang — Custom Programming Language in Java",
   description:
-    "A toy interpreted programming language crafted in Java with an interactive in-browser CheerpJ playground.",
+    "A custom interpreted programming language crafted in Java with an interactive in-browser CheerpJ playground.",
 };
 
 export default function RootLayout({ children }) {
